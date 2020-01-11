@@ -1,0 +1,50 @@
+
+@import 'variables';
+@import 'breakpoints-mixin';
+
+.zmg-card {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: $zmg-color-white;
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+  margin-bottom: 30px;
+  width: 100%;
+  .zmg-card-name {
+    position: relative;
+  }
+  .zmg-card-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    .zmg-card-content {
+      min-height: 150px;
+      .zmg-card-content-description{
+        padding: 1.5rem 0;
+      }
+    }
+  }
+  .zmg-card-mark {
+    line-height: 20px;
+    height: 20px;
+    left: -1.5rem;
+    position: absolute;
+    top: 0.5rem;
+    width: 20px;
+  }
+  .zmg-btn {
+    width: 40px;
+  }
+  .zmg-vote-down {
+    background-color: $zmg-color-yellow;
+    margin-right: 1rem;
+  }
+  .zmg-vote-up {
+    background-color: $zmg-color-green;
+    margin-right: 1rem;
+  }
+}
