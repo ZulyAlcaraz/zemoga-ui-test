@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { CardComponent } from './card.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
@@ -9,7 +10,8 @@ describe('CardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CardComponent, ProgressBarComponent ]
+      declarations: [ CardComponent, ProgressBarComponent ],
+      imports: [ ReactiveFormsModule ]
     })
     .compileComponents();
   }));
@@ -21,9 +23,11 @@ describe('CardComponent', () => {
       backgroundUrl: '',
       name: '',
       category: '',
-      totalVotes: 0,
-      thumbsUp: 0,
-      thumbsDown: 0
+      votes: {
+        total: 0,
+        thumbsUp: 0,
+        thumbsDown: 0
+      }
     };
     fixture.detectChanges();
   });

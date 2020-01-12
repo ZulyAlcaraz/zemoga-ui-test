@@ -1,8 +1,8 @@
+import { ProgressBar } from './progress-bar/progress-bar.model';
+
 export interface Card {
   backgroundUrl: string;
   name: string;
   category: string;
-  totalVotes: number;
-  thumbsUp: number;
-  thumbsDown: number;
+  votes: ProgressBar;
 }
