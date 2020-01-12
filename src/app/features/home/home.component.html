@@ -5,8 +5,8 @@
   <h2 class="zmg-home-title">Votes</h2>
 
   <section class="row">
-    <div *ngFor="let item of cards" class="col-12 col-lg-6">
-      <zmg-card [cardInfo]=item></zmg-card>
+    <div *ngFor="let item of cards; let i = index" class="col-12 col-lg-6">
+      <zmg-card [cardInfo]=item [index]=i></zmg-card>
     </div>
   </section>
 
