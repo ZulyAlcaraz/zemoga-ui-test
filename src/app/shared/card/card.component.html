@@ -6,16 +6,31 @@
         {{ cardInfo.name }}
       </h2>
       <p class="zmg-text-xs"><span class="zmg-text-bold">1 month ago</span> in {{ cardInfo.category }}</p>
-      <p class="zmg-card-content-description">Volutpat ultrices nibh sociosqu in risus suscipit nascetur, taciti aptent condimentum convallis imperdiet fringilla.</p>
-
-      <form>
-        <button class="zmg-btn zmg-vote-up"><i class="fas fa-thumbs-up" aria-label="up"></i></button>
-        <button class="zmg-btn zmg-vote-down"><i class="fas fa-thumbs-down" aria-label="down"></i></button>
-        <button class="zmg-btn-white">Vote now</button>
+      <p class="zmg-card-content-description" *ngIf="showVotes">Volutpat ultrices nibh sociosqu in risus suscipit nascetur, taciti aptent condimentum convallis imperdiet fringilla.</p>
+      
+      <form class="zmg-card-form" (ngSubmit)="submit()" [formGroup]="votesForm" *ngIf="showVotes">
+        <div class="zmg-card-input-content">
+          <input type="radio" id="thumbsUp{{index}}" [value]="true" class="zmg-card-input" formControlName="thumb">
+          <label class="zmg-btn zmg-vote-up" [class.zmg-btn-focus]="votesForm.get('thumb').value" for="thumbsUp{{index}}">
+            <i class="fas fa-thumbs-up"></i>
+          </label>
+        </div>
+        <div class="zmg-card-input-content">
+        <input type="radio" id="thumbsDown{{index}}" [value]="false" class="zmg-card-input" formControlName="thumb">
+          <label class="zmg-btn zmg-vote-down" [class.zmg-btn-focus]="votesForm.get('thumb').value === false" for="thumbsDown{{index}}">
+            <i class="fas fa-thumbs-down"></i>
+          </label>
+        </div>
+        <button type="submit" class="zmg-btn-white" [disabled]="votesForm?.pristine">Vote now</button>
       </form>
+
+      <div class="zmg-success-vote" *ngIf="!showVotes">
+        <p class="zmg-text-md">Thank you for voting!</p>
+        <button type="button" class="zmg-btn-white" (click)="showVotes = true">Vote again</button>
+      </div>
     </div>
   </div>
   <div class="zmg-card-footer">
-    <zmg-progress-bar></zmg-progress-bar>
+    <zmg-progress-bar [votes]=cardInfo.votes></zmg-progress-bar>
   </div>
 </section>

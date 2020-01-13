@@ -16,6 +16,11 @@ describe('ProgressBarComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ProgressBarComponent);
     component = fixture.componentInstance;
+    component.votes = {
+      total: 0,
+      thumbsUp: 0,
+      thumbsDown: 0
+    };
     fixture.detectChanges();
   });
 
