@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 import { Card } from './card.model';
 import { VotesService } from 'src/app/core/votes.service';
-import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'zmg-card',
@@ -11,7 +11,6 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class CardComponent implements OnInit {
 
-  thumb: boolean;
   showVotes = true;
   votesForm: FormGroup;
 
@@ -29,12 +28,8 @@ export class CardComponent implements OnInit {
     });
   }
 
-  changeThumb(value: boolean) {
-    this.thumb = value;
-  }
-
   submit() {
-    this.votesService.thumbs(this.index, this.thumb);
+    this.votesService.thumbs(this.index, this.votesForm.get('thumb').value);
     this.votesForm.get('thumb').patchValue('');
     this.votesForm.markAsPristine();
     this.votesForm.markAsUntouched();
